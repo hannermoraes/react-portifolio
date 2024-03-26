@@ -6,6 +6,7 @@ import { TechBadge } from '@/components/TechBadge/TechBadge';
 import { BiLogoGithub, BiLogoGmail, BiLogoLinkedin, BiLogoWhatsapp } from "react-icons/bi";
 import { Button } from '../ui/button';
 import { TypewriterEffectDemo } from '../TypewriterEffect';
+import { motion } from 'framer-motion';
 
 
 // Informações de Contato
@@ -62,7 +63,14 @@ export const HeroSection = () => {
       <div className='justify-center items-center flex md:flex-row lg:flex-row'>
 
         {/* Side Menu*/}
-        <div className='w-[90px] h-full justify-center flex flex-col items-start gap-6'>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.3 }}
+
+
+          className='w-[90px] h-full justify-center flex flex-col items-start gap-6'>
           {
             MOCK_CONTACTS.map((contact, index) => (
               <div key={`contact-${index}`} className='transition duration-300 ease-out hover:scale-110 hover:text-blue-500'>
@@ -72,10 +80,17 @@ export const HeroSection = () => {
               </div>
             ))
           }
-        </div >
+        </motion.div >
 
         {/* Title and Description */}
-        < div className='flex flex-col' >
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+
+
+          className='flex flex-col' >
 
           <div className='max-w-64'>
             <h1 className="font-geist antialiased font-extrabold text-6xl tracking-tighter">hanner</h1>
@@ -105,7 +120,12 @@ export const HeroSection = () => {
             {
               MOCK_TECHS.map((tech, index) => (
                 <div key={`tech-${index}`}>
-                  <TechBadge name={tech.name} />
+                  <TechBadge name={tech.name}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.2, ease: 'easeInOut' }}
+                  />
                 </div>
               ))
             }
@@ -119,7 +139,7 @@ export const HeroSection = () => {
               </Button>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section >
   )

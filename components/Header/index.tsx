@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import ModeToggle from '../ModeToggle/ModeToggle';
+import { motion } from 'framer-motion';
 
 export function Header() {
   const { theme, resolvedTheme } = useTheme();
@@ -28,7 +29,12 @@ export function Header() {
 
   return (
     <header className='px-4 md:px-14 lg:px-14'>
-      <nav className='flex pt-2 justify-between'>
+      <motion.nav
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        className='flex pt-2 justify-between'>
         <div>
           <Link href='/'>
             <Button variant='ghost' size='icon'>
@@ -45,32 +51,52 @@ export function Header() {
 
         <div className='flex items-center'>
           <ul className='hidden md:flex justify-center items-center font-kanit'>
-            <li>
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              exit={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.2 }}
+            >
               <div>
                 <Button className='' size='default' variant='ghost' onClick={() => handleSmoothScroll('known-techs')}>
                   <span className='font-normal pr-0.5 text-blue-500'>#&nbsp;</span>Habilidades
                 </Button>
               </div>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              exit={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.3 }}
+            >
               <div>
                 <Button size='default' variant='ghost' onClick={() => handleSmoothScroll('projects')}>
                   <span className='font-normal pr-0.5 text-blue-500'>#&nbsp;</span>Projetos
                 </Button>
               </div>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              exit={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.4 }}
+            >
               <div>
                 <Button size='default' variant='ghost' onClick={() => handleSmoothScroll('work-experience')} >
                   <span className='font-normal pr-0.5 text-blue-500'>#&nbsp;</span>Experiências
                 </Button>
               </div>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              exit={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.5 }}
+            >
               <div className='ml-4'>
                 <ModeToggle />
               </div>
-            </li>
+            </motion.li>
           </ul>
 
           <div className='ml-4 md:hidden'>
@@ -182,7 +208,7 @@ export function Header() {
             </ul>
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </header>
   );
 }
