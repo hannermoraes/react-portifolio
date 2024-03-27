@@ -1,5 +1,8 @@
+"use client"
+
 import { SectionTitle } from "@/components/SectionTitle"
 import { ExperienceItem } from "./ExperienceItem"
+import { motion } from "framer-motion"
 
 export const WorkExperience = () => {
 
@@ -15,9 +18,15 @@ export const WorkExperience = () => {
       <div className="max-w-[420px]">
         <SectionTitle title={"Experiência Profissional"} subtitle={"experiências"} />
         <div>
-          <p className="text-foreground text-xs font-geist mt-2">
-            Estou sempre aberto a novos desafios e projetos emocionantes. Vamos trabalhar juntos para criar soluções incríveis.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+
+            className="text-foreground text-xs font-geist mt-2">
+            Sempre aberto a novos desafios e projetos. Vamos trabalhar juntos para criar soluções incríveis!
+          </motion.p>
         </div>
       </div>
       <div className="flex flex-col gap-4">

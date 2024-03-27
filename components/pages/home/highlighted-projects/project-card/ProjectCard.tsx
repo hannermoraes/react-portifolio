@@ -34,24 +34,12 @@ export const ProjectCard = ({ imageURL, imageALT, title, description, technologi
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
 
-      className="rounded-3xl lg:pb-6 py-2 w-full justify-center dark:border-t-2 border-t-4 bg-gradient-to-b 
+      className="rounded-3xl lg:pb-6 py-5 w-full justify-center dark:border-t-2 border-t-4 bg-gradient-to-b 
     from-neutral-100/0 to-neutral-300/20 dark:from-neutral-900/0 dark:to-neutral-900/20 dark:border-neutral-300/30 mb-20">
       <div className='flex flex-col lg:flex-row justify-around xl: xl:gap-6' >
         <div className='lg:items-center sm:items-start md:items-start flex flex-col transition-all group'>
           {/* Title and status */}
           <div className='w-full flex flex-col md:flex md:flex-row lg:flex-row justify-between'>
-            <div className='flex items-center px-5 pb-1 lg:ml-8'>
-              <FaProjectDiagram size={18} />
-              <motion.h1
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-
-                className='flex items-center gap-3 font-extrabold text-xl font-geist subpixel-antialiased p-2 px-4'>
-                {title}
-              </motion.h1>
-            </div>
           </div>
           <motion.div
             initial={{ opacity: 0, scale: 1 }}
@@ -69,14 +57,27 @@ export const ProjectCard = ({ imageURL, imageALT, title, description, technologi
             />
           </motion.div>
         </div>
-        <div className='basis-2/4 lg:basis-3/5 lg:px-10 px-6'>
+        <div className='basis-2/4 lg:basis-3/5 lg:px-10 px-6 pt-4'>
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+
+            className='flex items-center'>
+            <FaProjectDiagram size={18} />
+            <h1 className='flex items-center gap-3 font-extrabold text-xl font-geist subpixel-antialiased px-4'>
+              {title}
+            </h1>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 1 }}
             whileInView={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            <p className='w-full mt-4 my-6 text-sm font-normal dark:font-extralight font-geist text-justify  subpixel-antialiased lg:mt-16 xl:h-full xl:mt-16'>
+            <p className='w-full mt-4 text-sm font-normal dark:font-extralight font-geist text-justify subpixel-antialiased 
+            lg:mt-4 lg:mb-4 xl:h-full text-gray-500'>
               {description}
             </p>
 
